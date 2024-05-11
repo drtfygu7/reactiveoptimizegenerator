@@ -1,17 +1,17 @@
-function sortColors(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  let i = 0;
-  while (i <= right) {
-    if (nums[i] === 0) {
-      [nums[i], nums[left]] = [nums[left], nums[i]];
-      left++;
-      i++;
-    } else if (nums[i] === 2) {
-      [nums[i], nums[right]] = [nums[right], nums[i]];
-      right--;
-    } else {
-      i++;
+function levelOrderBottom(root) {
+  if (!root) return [];
+  const result = [];
+  const queue = [root];
+  while (queue.length) {
+    const levelSize = queue.length;
+    const currentLevel = [];
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+      currentLevel.push(node.val);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
+    result.unshift(currentLevel);
   }
+  return result;
 }
