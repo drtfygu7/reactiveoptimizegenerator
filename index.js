@@ -1,10 +1,7 @@
-const factorial = (n) => {
-  if (n === 0 || n === 1) {
-    return 1;
-  }
-  let result = 1;
+const fibonacci = (n) => {
+  const sequence = [0, 1];
   for (let i = 2; i <= n; i++) {
-    result *= i;
+    sequence.push(sequence[i - 1] + sequence[i - 2]);
   }
-  return result;
+  return sequence;
 };
